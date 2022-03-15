@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "ID": "MS Dhoni",
+      "location": "dhoni",
+      "status": "msdhoni@gmail.com",
+      "id": 1
+    },
+    {
+      "ID": "Mohd Shami",
+      "location": "mohdshami",
+      "status": "shami@gmail.com",
+      "id": 4
+    },
+    {
+      "ID": "KL Rahul",
+      "location": "klrahul",
+      "status": "rahul@gmail.com",
+      "id": 5
+    },
+    {
+      "ID": "Shikhar Dhawan",
+      "location": "dhawansikhar",
+      "status": "dhawan@gmail.com",
+      "id": 6
+    }
+  ]
+}
