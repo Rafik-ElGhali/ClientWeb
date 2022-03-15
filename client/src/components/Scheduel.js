@@ -7,6 +7,7 @@ import {
   WeekView,
   Appointments,
 } from "@devexpress/dx-react-scheduler-material-ui";
+import moment from "moment";
 import appointments from "./demo-data/today-appointments";
 
 const PREFIX = "Demo";
@@ -250,12 +251,59 @@ const appointmentss = [
 ];
 
 const courses = [
-  { title: "cs101" },
-  { title: "cs102" },
-  { title: "cs103" },
-  { title: "cs104" },
-  { title: "cs105" },
+  { title: "cs101", duration: 2 },
+  { title: "cs102", duration: 2 },
+  { title: "cs103", duration: 2 },
+  { title: "cs104", duration: 2 },
 ];
+console.log(appointmentss[0]);
+var eight = moment().set({
+  year: 2018,
+  month: 5,
+  date: 25,
+  hour: 8,
+  minute: 0,
+});
+console.log(eight.toString());
+
+courses[0].startDate = eight.toDate();
+var tenend = eight.add(courses[0].duration, "hours");
+console.log(tenend.toString());
+courses[0].endDate = tenend.toDate();
+console.log(courses[0]);
+var ten = moment().set({
+  year: 2018,
+  month: 5,
+  date: 25,
+  hour: 10,
+  minute: 10,
+});
+console.log(ten.toString());
+ten.add(2, "hours");
+console.log(ten.toString());
+
+const times = [
+  {
+    startDate: new Date(2018, 5, 26, 8, 30),
+    endDate: new Date(2018, 5, 26, 10, 0),
+  },
+  {
+    startDate: new Date(2018, 5, 26, 10, 10),
+    endDate: new Date(2018, 5, 26, 12, 40),
+  },
+  {
+    startDate: new Date(2018, 5, 26, 13, 40),
+    endDate: new Date(2018, 5, 26, 15, 10),
+  },
+  {
+    startDate: new Date(2018, 5, 26, 15, 20),
+    endDate: new Date(2018, 5, 26, 16, 50),
+  },
+];
+const obj3 = { ...courses, ...times };
+const obj4 = Object.assign(times, courses);
+
+console.log(obj4);
 
 const appointmentsss = [{}];
 const datecreator = () => {
@@ -275,17 +323,39 @@ function isBetween(start, days) {
   return now >= startTS && now <= endTS;
 }
 
-const d = randomDate(new Date(2022, 9, 1), new Date(2022, 9, 10));
-var g = isBetween(d, 4);
-console.log(d);
-console.log(g);
+const s = randomDate(new Date(2022, 9, 1, 10, 0), new Date(2022, 9, 1, 12, 0));
+const e = randomDate(new Date(2022, 9, 1, 10), new Date(2022, 9, 10));
+//var g = isBetween(d, 4);
+console.log(s);
+// console.log(e);
+
+const getDatesBetween = (startDate, endDate, includeEndDate) => {
+  const dates = [];
+  const currentDate = startDate;
+  while (currentDate < endDate) {
+    dates.push(new Date(currentDate));
+    currentDate.setDate(currentDate.getDate() + 1);
+  }
+  if (includeEndDate) dates.push(endDate);
+  return dates;
+};
+
+//console.log(getDatesBetween(new Date(2020, 0, 1), new Date(2020, 0, 3)));
+// console.log(
+//   getDatesBetween(
+//     new Date(2020, 0, 1, 10, 0),
+//     new Date(2020, 0, 3, 12, 0),
+//     true
+//   )
+// );
+
 // const currentDate = "2018-05-24";
 const currentDate = "2018-06-27";
 export const Scheduel = () => {
   return (
     <div>
       <Paper>
-        <Scheduler data={appointmentss} height={800}>
+        <Scheduler data={courses} height={800}>
           <ViewState currentDate={currentDate} />
           <WeekView
             startDayHour={7}

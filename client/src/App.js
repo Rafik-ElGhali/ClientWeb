@@ -16,10 +16,12 @@ import Teachers from "./pages/Teachers";
 import Cohorts from "./pages/Cohorts";
 import ErrorPage from "./pages/ErrorPage";
 import { Scheduel } from "./components/Scheduel";
+import Testmui from "./components/Testmui";
 
 function App() {
   return (
     <div className="App">
+      {/* <Testmui /> */}
       {/* <AddProfessor /> */}
       <Scheduel />
       {/* <Router>
