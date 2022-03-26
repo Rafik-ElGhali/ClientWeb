@@ -5,18 +5,13 @@ import NavBar from './Component/NavBar';
 import NotFound from './Component/NotFound'; 
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import LoginPage from './components/LoginPage';
 
 function App() {
   return (
-    <BrowserRouter>
-      <NavBar />
-      <Switch>
-        <Route exact path="/all" component={AllClassrooms} />
-        <Route exact path="/add" component={AddClassroom} />
-        <Route exact path="/edit/:id" component={EditClassroom} />
-        <Route component={NotFound} />
-      </Switch>
-    </BrowserRouter>
+    <LoginPage>
+       </LoginPage>
+   
   );
 }
 
