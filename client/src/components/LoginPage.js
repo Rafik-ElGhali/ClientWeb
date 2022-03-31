@@ -42,10 +42,14 @@ function LoginPage() {
     var decodedToken = DecodeJwt(token);
     return decodedToken.role;
   };
+  const isTokenValid = (token) => {
+    var decodedToken = DecodeJwt(token);
+    return Date.now() <= decodedToken.exp * 1000;
+  };
   return (
     <div>
       {Cookies.get("access_token") != undefined &&
-      Cookies.get("access_token") ? (
+      Cookies.get("access_token") && isTokenValid(Cookies.get("access_token"))? (
         <div className="welcome">
           <div>
             {decodeJwt(Cookies.get("access_token")) != "admin" ? (
