@@ -1,0 +1,18 @@
+.datagrid {
+  align-content: center;
+  justify-content: center;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.tableau {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
