@@ -112,7 +112,7 @@ const DayScaleCell = (props) => {
   return <StyledWeekViewDayScaleCell {...props} />;
 };
 
-const appointmentss = [
+const appointments = [
   {
     title: "Discrete mathematics",
     startDate: new Date(2018, 5, 25, 11, 0),
@@ -136,7 +136,7 @@ const appointmentss = [
   },
 ];
 
-console.log(appointmentss[0]);
+console.log(appointments[0]);
 var eight = moment().set({
   year: 2018,
   month: 5,
@@ -194,22 +194,19 @@ const Scheduel = () => {
     let filteredCourses = [];
     coursesList.map((selectedCourse, index) => {
       console.log("coursesarray", courses);
-      courses.map((course) => {
-        console.log("message ", course.title);
-        console.log("selectedcourse ", selectedCourse);
+      initialCourses.map((course) => {
         if (course.title === selectedCourse) {
           filteredCourses.push(course);
         }
       });
     });
-    console.log(filteredCourses);
-    setCourses([...coursesList, filteredCourses]);
+    setCourses(filteredCourses);
   };
 
   useEffect(() => {
     if (coursesList.length > 0) {
       filterSelectedCourse();
-      displaySelectedCourses();
+      // displaySelectedCourses();
     }
   }, [coursesList]);
 
@@ -240,8 +237,6 @@ const Scheduel = () => {
     });
   };
 
-  coursesList.forEach((title, index) => {});
-
   return (
     <div>
       <FormControl sx={{ m: 1, width: 300 }}>
@@ -262,9 +257,9 @@ const Scheduel = () => {
           )}
           MenuProps={MenuProps}
         >
-          {initialCourses.map((name) => (
+          {initialCourses.map((name, index) => (
             <MenuItem
-              key={name.title}
+              key={index}
               value={name.title}
               style={getStyles(name.title, coursesList, theme)}
             >
